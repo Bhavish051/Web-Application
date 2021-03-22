@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Citizen Science</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+
+    <!-- Include Handlebars from a CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script src="/static/js/main.js" type=module defer></script>
+  </head>
+  <body>
+
+    <header>
+      <div id="logo"></div>
+      <nav class="col-3 menu">
+          <ul>
+              <li><a href="#" onclick="return window.onload()">Home</a></li>
+              <li id="UserClick"><a href="#!/users">Users</a></li>
+              <li id="ObservationClick"><a href="#!/observations">Observations</a></li>
+              <li><a href="#!/submit">Submit an observation</a></li>
+          </ul>
+      </nav>
+    </header>
+
+    <div id="content" class="col-6">
+
+      <div id="heading">
+          
+          <hgroup>
+              <h1>Citizen Science</h1>
+              <h2>Understanding Our Trees</h2>
+          </hgroup>
+          <div id="Users"></div>
+          <div id="Observations"></div>
+          <div id="form"></div>
+
+      </div>
+    </div>
+
+    <div id="col-3 aside">
+      <div id="social" >
+        <ul>
+          <li id="social-twitter"><a href="#/">Twitter</a></li>
+          <li id="social-facebook"><a href="#">Facebook</a></li>
+          <li id="social-instagram"><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+      <div>
+        <ul >
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Cookies</a></li>
+        </ul>
+      </div>
+    </div>  
+    
+  <footer>  
+    <p id="copyright">All content and images subject to copyright &copy; COMP2110 Citizen Science 2020.</p>
+  </footer>
+
+
+  <!-- Templates -->
+  <!--This script is to view all the users -->
+  <script id="User-template" type="text/x-handlebars-template">
+    <ul>
+      {{#each Users}}
+      <li class=User> <a href="/#!/users/{{id}}"> {{id}}  {{first_name}}  {{last_name}}</a> </li>
+      {{/each}}
+      </ul>
+  </script>
+  <!--This script is to view all the observations-->
+  <script id="Observations-template" type="text/x-handlebars-template">
+    <h2>Recent Observations</h2>
+  <ul>
+    {{#each Observations}}
+    <li><a href="/#!/observations/{{id}}">{{timestamp}} | {{location}} | {{weather}}| {{temperature}}&#8451;  </a></li>
+    {{/each}}
+  </ul>
+  </script>
+  <!--This script displays individual user-->
+  <script id = "User-View" type="text/x-handlebars-template">
+  <h2>{{first_name}} {{last_name}}</h2>
+    <ul>
+      <li>User ID: {{id}}</li>
+      <li>User email: {{email}}</li>
+    </ul>
+    <img src = {{avatar}}>
+  </script>
+  <!--This script displays individual observation-->
+  <script id="Observation-View" type="text/x-handlebars-template">
+    <h2>Observation Number: {{id}}</h2>
+    <ul>
+      <li>Participant id: {{participant}}</li>
+      <li>TimeStamp: {{timestamp}}</li>
+      <li>Temperature: {{temperature}} &#8451;</li>
+      <li>Weather: {{weather}}</li>
+      <li>Wind: {{wind}}</li>
+      <li>Location: {{location}}</li>
+      <li>Height: {{height}}</li>
+      <li>Girth: {{girth}}</li>
+      <li>Leaf Size: {{leaf_size}}</li>
+      <li>Leaf Shape: {{leaf_shape}}</li>
+      <li>Bark Color: {{bark_color}}</li>
+      <li>Bark Texture: {{bark_texture}}</li>
+    </ul>            
+  </script>
+  <!--This script displays the forms-->
+  <script id="Form-template" type="text/x-handlebars-template">
+    <ul>
+      <form id="form">
+        <li>
+          <label for="participant">Participant ID:</label>
+          <input participant = participant>
+        </li>
+        <li>
+          <label for="timestamp">TimeStamp:</label>
+          <input timestamp = timestamp>
+        </li>
+        <li>
+          <label for="temperature">Temperature:</label>
+          <input temperature = temperature>
+        </li>
+        <li>
+          <label for="Weather">Weather:</label>
+          <input Weather = Weather>
+        </li>
+        <li>
+          <label for="Wind">Wind:</label>
+          <input Wind = Wind>
+        </li>
+        <li>
+          <input type="Submit">
+        </li>
+      </form>
+    </ul>
+  </script>
+  </body>
+</html>
